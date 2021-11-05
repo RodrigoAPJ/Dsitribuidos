@@ -126,8 +126,8 @@ func WriteOnRegister(playerId string, node string, phase string) {
 	mu.Lock()
 
 	//file, err := os.Create("jugador_"+playerId+"__ronda_1.txt")
-	//WLS file, err := os.OpenFile("Registro.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	file, err := os.OpenFile("./namenode/Registro.txt", os.O_RDWR|os.O_CREATE, 0755)
+	file, err := os.OpenFile("./namenode/Registro.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	//file, err := os.OpenFile("./namenode/Registro.txt", os.O_RDWR|os.O_CREATE, 0755)
 
 	if err != nil {
         log.Fatal(err)
