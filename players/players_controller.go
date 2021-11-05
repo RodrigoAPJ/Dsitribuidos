@@ -423,6 +423,8 @@ func JoinSquidGameServer(players *[]Player) {
 
         c := leader_proto.NewSquidGameClient(conn)
 
+        log.Printf("ME CONECTE AL LEADER: " + address)
+
         // Contact the server and print out its response.
         id := defaultName
         ctx, cancel := context.WithTimeout(context.Background(), 6 * time.Second)

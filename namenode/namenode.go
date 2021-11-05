@@ -17,7 +17,7 @@ import (
 )
 
 const (
-	port = "10.6.43.106:50052"
+	port = ":50052"
     dataNode1 = "10.6.43.105:50053"
     dataNode2 = "10.6.43.105:50054"
     dataNode3 = "10.6.43.105:50055" 
@@ -160,7 +160,7 @@ func ConectToDataNode(dN string) {
     } else {
     	c_dN3 = dataNode_proto.NewDNSquidGameClient(conn)
     }
-    
+    log.Printf("ME CONECTE AL DATANODE "+ dN)
 }
 
 func main() {

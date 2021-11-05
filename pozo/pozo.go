@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	port = "10.6.43.105:50056"
+	port = ":50056"
 )
 
 var monto int

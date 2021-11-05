@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	port = "10.6.43.107:50051"
+	port = ":50051"
 	NameNode = "10.6.43.106:50052"
 	minG1    = 6
 	maxG1    = 10
@@ -414,6 +414,8 @@ func ConectToNameNode(){
     }
 
     c_NameNode = nameNode_proto.NewNNSquidGameClient(conn)
+
+    log.Printf("ME CONECTE AL NAMENODE: " + NameNode)
 }
 
 func ConnectGRPPozo() {
@@ -426,7 +428,7 @@ func ConnectGRPPozo() {
 	}
 
 	cPozo = pozo_proto.NewPozoClient(_Conn)
-
+	log.Printf("ME CONECTE AL POZO: " + addressPozo)
 }
 
 func CreateRabbit() {
