@@ -372,7 +372,7 @@ func GetMonto() {
 func PrintAlivePlayers() {
 	vivos = ""
 	for i := 0; i < len(players); i++{
-		if players[i].alive = true {
+		if players[i].alive == true {
 			vivos += (strconv.Itoa(i) + " ")
 		}
 	}
