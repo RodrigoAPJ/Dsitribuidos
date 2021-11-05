@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	port = ":50051"
+	port = "10.6.43.107:50051"
 	NameNode = "10.6.43.106:50052"
 	minG1    = 6
 	maxG1    = 10
