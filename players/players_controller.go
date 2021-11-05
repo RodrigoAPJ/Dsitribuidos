@@ -15,7 +15,7 @@ import (
 )
 
 const (
-    address     = "localhost:50051"
+    address     = "10.6.43.107:50051"
     defaultName = "0"
     maxNumPlayers = 16
     minG1    = 1

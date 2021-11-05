@@ -12,13 +12,13 @@ import (
 	"sync"
 	"os"
 	"google.golang.org/grpc"
-	dataNode_proto "my_packages/grpc_dataNode"
+	dataNode_proto "my_packages/grpc_datanode"
 )
 
 const (
-    dataNode1 = ":50053"
-    dataNode2 = ":50054"
-    dataNode3 = ":50055" 
+    dataNode1 = "10.6.43.105:50053"
+    dataNode2 = "10.6.43.105:50054"
+    dataNode3 = "10.6.43.105:50055" 
     path1 = "DN1/"
     path2 = "DN2/"
     path3 = "DN3/"
@@ -97,7 +97,7 @@ func OpenDataNodeServer(port string) {
 	s := grpc.NewServer()
 	dataNode_proto.RegisterDNSquidGameServer(s, &server{})
 
-	log.Printf("Server localhost " + port + " opened and listening")
+	log.Printf("Server " + port + " opened and listening")
 
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
@@ -119,7 +119,7 @@ func main() {
 	go OpenDataNodeServer(dataNode2)
 	go OpenDataNodeServer(dataNode3)
 
-	log.Printf("Server localhost"+dataNode1+ "opened and listening")
+	log.Printf("Server "+dataNode1+ "opened and listening")
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}

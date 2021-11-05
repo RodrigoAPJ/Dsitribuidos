@@ -14,21 +14,21 @@ import (
     //"io"
 	"google.golang.org/grpc"
 	leader_proto "my_packages/grpc_leader"
-	nameNode_proto "my_packages/grpc_nameNode"
+	nameNode_proto "my_packages/grpc_namenode"
 	pozo_proto "my_packages/grpc_pozo"
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 
 const (
-	port = ":50051"
-	NameNode = "localhost:50052"
+	port = "10.6.43.107:50051"
+	NameNode = "10.6.43.106:50052"
 	minG1    = 6
 	maxG1    = 10
 	roundsG1 = 4
 	minG2 = 1
 	maxG2 = 4
 	maxNumPlayers = 16
-	addressPozo = "localhost:50056"
+	addressPozo = "10.6.43.105:50056"
 )
 
 type Player struct{
