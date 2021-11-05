@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "../grpc_pozo";
+
+
+service Pozo {
+	rpc GetMonto(RequestMonto) returns (Monto) {}
+}
+
+
+message RequestMonto {
+	string request = 1;
+}
+
+message Monto {
+	string montoPozo = 1;
+}

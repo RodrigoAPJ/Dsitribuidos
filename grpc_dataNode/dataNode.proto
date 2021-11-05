@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option go_package = "../grpc_datanode";
+
+service DNSquidGame {
+    rpc DNSendPlaysG1 (DNPlayG1) returns (DNConfirmation) {}
+    rpc DNSendPlayG2 (DNPlayG2) returns (DNConfirmation) {}
+    rpc DNReceivePlaysG1 (DNPlayer) returns (DNPlayG1) {}
+}
+
+message DNPlayG2 {
+    int64 number = 1;
+    string playerId = 2;
+    string node = 3;
+}
+
+message DNPlayG1 {
+    repeated int64 numbers = 1 [packed = true];
+    string playerId = 2;
+    string node = 3;
+}
+
+message DNPlayer {
+    string playerId = 2;    
+}
+
+message DNConfirmation {
+    bool processed = 1;
+}

@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option go_package = "../grpc_leader";
+
+service SquidGame {
+    rpc JoinGame (JoinRequest) returns (JoinReply) {}
+    rpc SendPlaysG1 (PlayG1) returns (State) {}
+    rpc SendPlayG2 (PlayG2) returns (State) {}
+    rpc GetTeamG2 (PlayerInfo) returns (TeamInfo) {}
+    rpc GetResultsG2 (TeamInfo) returns (State) {}
+}
+
+message State {
+    bool alive = 1;
+    bool winner = 2;
+    bool playProcessed = 3;
+}
+
+message PlayerInfo {
+    string playerId = 1;
+}
+
+message TeamInfo {
+    string team = 1;
+    string playerId = 2;
+}
+
+message PlayG3 {
+    string id = 1;
+    int64 play = 2;
+}
+
+message PlayG2 {
+    int64 play = 1;
+    string playerId = 2;
+    string team = 3;
+}
+
+message PlayG1 {
+    repeated int64 numbers = 1 [packed = true];
+    string playerId = 2;
+}
+
+message JoinRequest {
+    string name = 1;
+}
+
+message JoinReply {
+    string message = 1;
+}

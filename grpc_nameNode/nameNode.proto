@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option go_package = "../grpc_namenode";
+
+service NNSquidGame {
+    rpc NNSendPlaysG1 (NNPlayG1) returns (NNConfirmation) {}
+    rpc NNSendPlaysG2 (NNPlayG2) returns (NNConfirmation) {}
+    rpc NNReceivePlaysG1 (NNPlayer) returns (NNPlayG1) {}
+}
+
+message NNPlayG2 {
+    int64 number = 1;
+    string playerId = 2;
+}
+
+message NNPlayG1 {
+    repeated int64 numbers = 1 [packed = true];
+    string playerId = 2;
+}
+
+message NNPlayer {
+	string playerId = 2;	
+}
+
+message NNConfirmation {
+	bool processed = 1;
+}
