@@ -53,14 +53,14 @@ func (s *server) DNSendPlaysG1(ctx context.Context, in *dataNode_proto.DNPlayG1)
 
 func WriteOnFile(numbers []int64, playerId string, phase string, node string) {
 	mu.Lock()
-	var auxPath string = "./"
+	var auxPath string = "./datanode/"
 
 	if node == "1" {
-		auxPath = path1
+		auxPath += path1
 	} else if node == "2" {
-		auxPath = path2
+		auxPath += path2
 	} else {
-		auxPath = path3
+		auxPath += path3
 	}
 
 	//file, err := os.Create("jugador_"+playerId+"__ronda_1.txt")
