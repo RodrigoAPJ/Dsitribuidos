@@ -114,7 +114,7 @@ func (s *server) SendPlaysG1(ctx context.Context, in *leader_proto.PlayG1) (*lea
     	_id , _ := strconv.Atoi(in.PlayerId)
     	players[_id].alive = alive
 
-    	if alive {
+    	if !alive {
     		log.Printf("Jugador "+in.PlayerId+" murió en el juego 1")
     	}
 
@@ -159,6 +159,9 @@ func (s *server) GetTeamG2(ctx context.Context, in *leader_proto.PlayerInfo) (*l
 		if numOfCurrPlayers % 2 != 0 {
 			numOfCurrPlayers -= 1
 
+			i, _ := strconv.Atoi(in.PlayerId)
+			players[i].alive = false
+			log.Printf("Jugador "+in.PlayerId+" murió por imparidad en número de jugadores")
 			return &leader_proto.TeamInfo{Team:"KILLED"}, nil
 		}
 
