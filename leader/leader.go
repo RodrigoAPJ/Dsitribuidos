@@ -114,6 +114,10 @@ func (s *server) SendPlaysG1(ctx context.Context, in *leader_proto.PlayG1) (*lea
     	_id , _ := strconv.Atoi(in.PlayerId)
     	players[_id].alive = alive
 
+    	if alive {
+    		log.Printf("Jugador "+in.PlayerId+" murió en el juego 1")
+    	}
+
     	//SEND TO NAME NODE
 	    c_NameNode.NNSendPlaysG1(ctx, &nameNode_proto.NNPlayG1{Numbers:in.Numbers, PlayerId:in.PlayerId})
 	    
@@ -182,6 +186,8 @@ func (s *server) GetResultsG2(ctx context.Context, in *leader_proto.TeamInfo) (*
 		// Actualizamos info jugador
 		i, _ := strconv.Atoi(in.PlayerId)
 		players[i].alive = false
+
+		log.Printf("Jugador: "+in.PlayerId+" murió en el juego 2")
 
 		// Retornar estado muerto y procesado
 		return &leader_proto.State{Alive:false, PlayProcessed: true}, nil
@@ -363,6 +369,18 @@ func GetMonto() {
 
 }
 
+func PrintAlivePlayers() {
+	vivos = ""
+	for i := 0; i < len(players); i++{
+		if players[i].alive = true {
+			vivos += (strconv.Itoa(i) + " ")
+		}
+	}
+	if len(vivos) > 0 {
+		log.Printf("Jugadores vivos: " + vivos)
+	}
+}
+
 func Menu() {
 	option := 0
 	juego  := 1
@@ -380,8 +398,8 @@ func Menu() {
 		if option == 1 {
 			PlayGame(juego)
 			juego += 1
-		} else if option == 2 {
-			
+			PrintAlivePlayers()
+		} else if option == 2 {	
 
 		} else if option == 3 {
 			GetMonto()
@@ -390,7 +408,6 @@ func Menu() {
 		}
 
 		if CheckWinners() {
-			log.Printf("AAAAAAAAAAAAAAAAAAAAAA")
 			option = 4
 			flagWinners = true
 		}

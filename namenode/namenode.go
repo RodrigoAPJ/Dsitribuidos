@@ -19,8 +19,8 @@ import (
 const (
 	port = "10.6.43.106:50052"
     dataNode1 = "10.6.43.105:50053"
-    dataNode2 = "10.6.43.105:50054"
-    dataNode3 = "10.6.43.105:50055" 
+    dataNode2 = "10.6.43.107:50054"
+    dataNode3 = "10.6.43.108:50055" 
 )
 
 var mu sync.Mutex

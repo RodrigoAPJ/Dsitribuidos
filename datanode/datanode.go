@@ -8,7 +8,7 @@ import (
 	"net"
     "strconv"
     //"errors"
-    //"fmt"
+    "fmt"
 	"sync"
 	"os"
 	"google.golang.org/grpc"
@@ -17,8 +17,8 @@ import (
 
 const (
     dataNode1 = "10.6.43.105:50053"
-    dataNode2 = "10.6.43.105:50054"
-    dataNode3 = "10.6.43.105:50055" 
+    dataNode2 = "10.6.43.107:50054"
+    dataNode3 = "10.6.43.108:50055" 
     path1 = "DN1/"
     path2 = "DN2/"
     path3 = "DN3/"
@@ -107,21 +107,26 @@ func OpenDataNodeServer(port string) {
 
 
 func main() {
-	lis, err := net.Listen("tcp", dataNode1)
-	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
-		return
+
+	option := 0
+
+	log.Printf("A continuación se le pedira ingresar la máquina que esta usando, así se levantara el servidor con la ip correspondiente, para más detalle ver README.txt")
+
+	for option != 117 && option != 119 && option != 120 {
+		log.Printf("Ingrese máquina en la que esta 117, 119 o 120")
+		fmt.Scanf("%d", &option)
+
+		if option != 117 && option != 119 && option != 120 {
+			log.Printf("Ingrese una opcion válida 117, 119, 120")
+		}
 	}
-	defer lis.Close()
 
-	s := grpc.NewServer()
-	dataNode_proto.RegisterDNSquidGameServer(s, &server{})
-
-	go OpenDataNodeServer(dataNode2)
-	go OpenDataNodeServer(dataNode3)
-
-	log.Printf("Server "+dataNode1+ " opened and listening")
-	if err := s.Serve(lis); err != nil {
-		log.Fatalf("failed to serve: %v", err)
+	if option == 117 {
+		OpenDataNodeServer(dataNode1)
+	} else if option == 119 {
+		OpenDataNodeServer(dataNode2)
+	} else {
+		OpenDataNodeServer(dataNode3)
 	}
+
 }

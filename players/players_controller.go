@@ -33,18 +33,6 @@ type Player struct {
     c leader_proto.SquidGameClient
 }
 
-func PrintPlayers(players []Player, size int) {
-    for i := 0; i < size; i++ {
-        var state string
-        if players[i].alive {
-            state = "alive"
-        } else {
-            state = "dead"
-        }
-        log.Printf("%v is %v", players[i].id, state)
-    }
-}
-
 func Choose4Nums(smartBots bool) []int64 {
     givenNumbers := 0
     number := 0
