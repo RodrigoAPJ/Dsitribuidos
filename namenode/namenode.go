@@ -12,8 +12,8 @@ import (
 	"sync"
 	"os"
 	"google.golang.org/grpc"
-	nameNode_proto "my_packages/grpc_namenode"
-	dataNode_proto "my_packages/grpc_datanode"
+	nameNode_proto "my_packages/grpc_nameNode"
+	dataNode_proto "my_packages/grpc_dataNode"
 )
 
 const (

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "../grpc_datanode";
+option go_package = "../grpc_dataNode";
 
 service DNSquidGame {
     rpc DNSendPlaysG1 (DNPlayG1) returns (DNConfirmation) {}

@@ -14,7 +14,7 @@ import (
     //"io"
 	"google.golang.org/grpc"
 	leader_proto "my_packages/grpc_leader"
-	nameNode_proto "my_packages/grpc_namenode"
+	nameNode_proto "my_packages/grpc_nameNode"
 	pozo_proto "my_packages/grpc_pozo"
 	amqp "github.com/rabbitmq/amqp091-go"
 )

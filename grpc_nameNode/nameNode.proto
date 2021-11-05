@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "../grpc_namenode";
+option go_package = "../grpc_nameNode";
 
 service NNSquidGame {
     rpc NNSendPlaysG1 (NNPlayG1) returns (NNConfirmation) {}
